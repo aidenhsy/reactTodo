@@ -3,6 +3,7 @@ import Header from "./components/layouts/Header";
 import AddTodo from "./components/AddTodo";
 import Todos from "./components/Todos";
 import axios from "axios";
+import { v4 as uuid } from "uuid";
 import "./App.css";
 
 class App extends Component {
@@ -29,11 +30,19 @@ class App extends Component {
       todos: [...this.state.todos.filter((todo) => todo.id !== id)],
     });
   };
+  addTodo = (title) => {
+    const newTodo = {
+      id: uuid(),
+      title,
+      completed: false,
+    };
+    this.setState({ todos: [...this.state.todos, newTodo] });
+  };
   render() {
     return (
       <div>
         <Header />
-        <AddTodo />
+        <AddTodo addTodo={this.addTodo} />
         <Todos
           todos={this.state.todos}
           markCompleted={this.markCompleted}
