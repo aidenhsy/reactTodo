@@ -13,3 +13,12 @@ a {
   color: #333;
   text-decoration: none;
 }
+
+.btn {
+  background: "#555";
+  cursor: pointer;
+}
+
+.btn:hoover {
+  background: "yellow";
+}
